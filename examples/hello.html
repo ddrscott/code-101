@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <style>
+h1 {
+  color: red;
+  font-size: 100%;
+}
+.even {
+  color: yellow;
+}
+.odd {
+  background: blue;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p>
+      Welcome to class!
+    </p>
+    <script>
+    for (var i=0; i < 10; i++) {
+      var even_odd = '';
+      if (i % 2 == 0) {
+        even_odd = 'even';
+      } else {
+        even_odd = "odd";
+      }
+      document.write(
+        '<p class="' + even_odd  + '">i: ' + i + ', ' + even_odd + '</p>'
+      );
+    }
+    </script>
+
+    <script>
+document.write(
+  "&amp;lt;script&amp;gtdocument.write('hello from nested');&amp;lt;/script&amp;gt;"
+)
+    </script>
+  </body>
+</html>
