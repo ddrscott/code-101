@@ -1,5 +1,5 @@
+# Holds a list of emails to list names
 class Subscriber < ApplicationRecord
-
   # Parse subscribers from a file
   def self.parse(file:)
     RemoteTable.new(file).rows.map do |row|
@@ -18,7 +18,7 @@ class Subscriber < ApplicationRecord
   end
 
   def self.import_google
-    import(file: 'https://docs.google.com/spreadsheets/u/0/d/1NPj5aCisKxU3nC5o94K_PDrvMH_U71xjVkWkZBHC-lY/export?format=csv&id=1NPj5aCisKxU3nC5o94K_PDrvMH_U71xjVkWkZBHC-lY&gid=0')
+    import(file: 'https://docs.google.com/spreadsheets/u/0/d/1NPj5aCisKxU3nC5o94K_PDrvMH_U71xjVkWkZBHC-lY/export?format=csv')
   end
 
   def self.summary
@@ -26,6 +26,7 @@ class Subscriber < ApplicationRecord
       .map { |k, v| { list: k, count: v } }
       .sort_by { |row| row[:count] }
       .reverse
+
     CSV.generate do |csv|
       csv << counts.first.keys
       counts.each do |h|
